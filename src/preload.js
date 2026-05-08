@@ -2,5 +2,6 @@ const { contextBridge } = require("electron");
 
 contextBridge.exposeInMainWorld("navnerd", {
   appName: "NavNerd",
-  homeUrl: "https://www.google.com"
+  version: "0.3.0",
+  homeUrl: "navnerd://home"
 });

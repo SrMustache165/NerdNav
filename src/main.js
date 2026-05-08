@@ -3,10 +3,10 @@ const path = require("path");
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
-    minWidth: 900,
-    minHeight: 600,
+    width: 1320,
+    height: 860,
+    minWidth: 1024,
+    minHeight: 680,
     title: "NavNerd",
     backgroundColor: "#0b1020",
     webPreferences: {
@@ -17,17 +17,14 @@ function createWindow() {
       contextIsolation: true,
       sandbox: true,
 
-      // Permite usar a tag <webview>
+      // Necessário para usar <webview>
       webviewTag: true
     }
   });
 
   mainWindow.loadFile(path.join(__dirname, "index.html"));
-
-  // Remove o menu padrão do Electron
   mainWindow.removeMenu();
 
-  // Impede que janelas externas sejam abertas livremente pelo app principal
   mainWindow.webContents.setWindowOpenHandler(() => {
     return { action: "deny" };
   });

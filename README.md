@@ -78,7 +78,34 @@ navnerd/
 | `styles.css`   | Estilos visuais do navegador.                                 |
 | `package.json` | Configurações, scripts e dependências do projeto.          |
 
----
+## Versão 0.3.0 - V3
+
+A versão V3 adiciona suporte a abas, tornando o NavNerd mais próximo de um navegador real.
+
+### Novidades
+
+- Sistema de múltiplas abas
+- Nova aba com botão dedicado
+- Fechamento de abas
+- Alternância entre abas
+- Cada aba mantém sua própria navegação
+- Atalhos de teclado:
+  - `Ctrl + T` para nova aba
+  - `Ctrl + W` para fechar aba
+  - `Ctrl + Tab` para próxima aba
+  - `Ctrl + Shift + Tab` para aba anterior
+  - `Ctrl + L` para focar a barra de endereço
+  - `Ctrl + D` para favoritar página atual
+  - `Ctrl + H` para abrir ou fechar painel lateral
+
+### Conceitos aplicados
+
+- Gerenciamento de estado com JavaScript puro
+- Controle dinâmico de componentes no DOM
+- Criação dinâmica de WebViews
+- Persistência local de histórico e favoritos
+- Atalhos globais dentro da aplicação
+- Organização progressiva de funcionalidades
 
 ## Pré-requisitos
 

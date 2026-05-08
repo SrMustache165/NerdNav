@@ -2,7 +2,12 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;" />
+
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;"
+  />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>NavNerd</title>
@@ -11,19 +16,34 @@
 </head>
 <body>
   <header class="browser-header">
-    <div class="brand">
-      <div class="logo">N</div>
-      <div>
-        <strong>NavNerd</strong>
-        <span id="page-title">Navegador v0.1</span>
+    <div class="top-row">
+      <div class="brand">
+        <div class="logo">N</div>
+
+        <div>
+          <strong>NavNerd</strong>
+          <span id="page-title">Navegador v0.3</span>
+        </div>
       </div>
+
+      <div class="version-badge">V3 • Abas</div>
+    </div>
+
+    <div class="tabs-row">
+      <div id="tabs-list" class="tabs-list"></div>
+
+      <button id="btn-new-tab" class="new-tab-button" title="Nova aba">
+        +
+      </button>
     </div>
 
     <div class="navigation-bar">
+      <button id="btn-sidebar" title="Abrir painel lateral">☰</button>
       <button id="btn-back" title="Voltar">←</button>
       <button id="btn-forward" title="Avançar">→</button>
       <button id="btn-reload" title="Atualizar">⟳</button>
       <button id="btn-home" title="Página inicial">⌂</button>
+      <button id="btn-favorite" title="Favoritar página atual">☆</button>
 
       <form id="url-form">
         <input
@@ -43,13 +63,93 @@
     </div>
   </header>
 
-  <main class="browser-content">
-    <webview
-      id="browser-view"
-      src="https://www.google.com"
-      partition="persist:navnerd"
-    ></webview>
-  </main>
+  <div class="layout">
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <strong>Painel Nerd</strong>
+        <button id="btn-close-sidebar" title="Fechar painel">×</button>
+      </div>
+
+      <section class="sidebar-section">
+        <div class="section-title">
+          <span>Favoritos</span>
+        </div>
+
+        <div id="sidebar-favorites" class="compact-list">
+          <p class="empty-text">Nenhum favorito ainda.</p>
+        </div>
+      </section>
+
+      <section class="sidebar-section">
+        <div class="section-title">
+          <span>Histórico</span>
+          <button id="btn-clear-history" class="small-action">Limpar</button>
+        </div>
+
+        <div id="sidebar-history" class="compact-list">
+          <p class="empty-text">Histórico vazio.</p>
+        </div>
+      </section>
+    </aside>
+
+    <main class="browser-content">
+      <section id="home-view" class="home-view">
+        <div class="hero-card">
+          <div class="hero-logo">N</div>
+
+          <h1>NavNerd</h1>
+
+          <p>
+            Navegador desktop experimental criado com Electron, agora com suporte
+            a abas, histórico, favoritos e atalhos de produtividade.
+          </p>
+
+          <form id="home-search-form" class="home-search">
+            <input
+              id="home-search-input"
+              type="text"
+              placeholder="Pesquise ou digite um site..."
+              autocomplete="off"
+              spellcheck="false"
+            />
+
+            <button type="submit">Navegar</button>
+          </form>
+
+          <div class="shortcut-hints">
+            <span>Ctrl + T: nova aba</span>
+            <span>Ctrl + W: fechar aba</span>
+            <span>Ctrl + L: focar URL</span>
+            <span>Ctrl + Tab: próxima aba</span>
+          </div>
+        </div>
+
+        <div class="home-grid">
+          <section class="home-card">
+            <div class="section-title">
+              <span>Favoritos</span>
+            </div>
+
+            <div id="home-favorites" class="home-list">
+              <p class="empty-text">Seus favoritos aparecerão aqui.</p>
+            </div>
+          </section>
+
+          <section class="home-card">
+            <div class="section-title">
+              <span>Histórico recente</span>
+            </div>
+
+            <div id="home-history" class="home-list">
+              <p class="empty-text">Seu histórico recente aparecerá aqui.</p>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <div id="webviews-container" class="webviews-container"></div>
+    </main>
+  </div>
 
   <script src="./renderer.js"></script>
 </body>
