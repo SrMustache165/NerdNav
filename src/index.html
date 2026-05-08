@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>NavNerd</title>
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="browser-header">
+    <div class="brand">
+      <div class="logo">N</div>
+      <div>
+        <strong>NavNerd</strong>
+        <span id="page-title">Navegador v0.1</span>
+      </div>
+    </div>
+
+    <div class="navigation-bar">
+      <button id="btn-back" title="Voltar">←</button>
+      <button id="btn-forward" title="Avançar">→</button>
+      <button id="btn-reload" title="Atualizar">⟳</button>
+      <button id="btn-home" title="Página inicial">⌂</button>
+
+      <form id="url-form">
+        <input
+          id="url-input"
+          type="text"
+          placeholder="Digite uma URL ou pesquise alguma coisa..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+
+        <button id="btn-go" type="submit">Ir</button>
+      </form>
+    </div>
+
+    <div class="status-row">
+      <span id="status-text">Pronto</span>
+    </div>
+  </header>
+
+  <main class="browser-content">
+    <webview
+      id="browser-view"
+      src="https://www.google.com"
+      partition="persist:navnerd"
+    ></webview>
+  </main>
+
+  <script src="./renderer.js"></script>
+</body>
+</html>

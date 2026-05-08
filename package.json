@@ -1,0 +1,17 @@
+{
+  "name": "navnerd",
+  "version": "0.1.0",
+  "description": "NavNerd - navegador desktop simples feito com Electron",
+  "main": "src/main.js",
+  "author": "Diogo",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^42.0.1"
+  },
+  "keywords": [],
+  "type": "commonjs"
+}
